@@ -25,7 +25,4 @@ A social blog being built using Node.js &amp; MongoDB.
 1. Fully Responsive design.
 2. Rich in User Experience.
 
-###### Contributors
-Sumanth Reddy ,Poorna Chandu & other contributors.
-
-:copyright:Sumanth Reddy & Poorna Chandu
+:copyright:sumanth
