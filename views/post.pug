@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    title write a post
+    link(rel="stylesheet", href="css/bootstrap.css")
+    link(rel="stylesheet", href="css/form.css")
+body
+    .container
+        .row
+            form.col-md-4(action='/post',method='post')
+                .form-group
+                    label(for='username') Username
+                    input.form-control(type='text',name="username",required='',autocomplete='off',value= user.username)
+                .form-group
+                    label(for='bio') Bio
+                    input.form-control(type='text',name="bio",value=user.bio)
+                .form-group
+                    label(for='bio') Display Name
+                    input.form-control(type='text',name="displayName",value=user.displayName)
+                button.btn.btn-success.full-width(type='submit') Update Profile
+    
