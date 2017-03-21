@@ -7,7 +7,7 @@ html
     body
         .container
             if(currentUser)
-                p hello #{currentUser.name()}
+                p hello #{currentUser.email}
                 a(href="/signout") signout
             else
                 p Hello user 

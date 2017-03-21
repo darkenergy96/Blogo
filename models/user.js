@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 var bcrypt = require("bcrypt-nodejs");
 var SALT_FACTOR = 8;
 var userSchema = mongoose.Schema({
-    username:String,
+    email:String,
     password:String,
     joinedOn:{type:Date,default:Date.now()},
     displayName:String,
@@ -35,8 +35,5 @@ userSchema.methods.checkPassword = function(guess, done) {
  });
 };
 
-userSchema.methods.name = function(){
-    return this.displayName || this.username;
-}
 var User = mongoose.model('User',userSchema);
 module.exports = User;

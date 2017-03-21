@@ -14,9 +14,13 @@ module.exports = function() {
  });
 };
 
-passport.use("login", new LocalStrategy(
-    function(username, password, done) {
- User.findOne({ username: username }, function(err, user) {
+passport.use("login", new LocalStrategy({
+    usernameField:'email',
+    passwordField:'password',
+    // passReqToCallback:true
+},
+    function(email, password, done) {
+ User.findOne({ email: email }, function(err, user) {
  if (err) { return done(err); }
  if (!user) {
  return done(null, false,

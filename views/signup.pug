@@ -13,8 +13,8 @@ html
         h2.h2.text-center Signup for wizards
         form(action='/signup' method='post')
           .form-group
-            label(for='inputEmail') Username
-            input#inputEmail.form-control(type='text', placeholder='Username',name="username",required='',autocomplete='off')
+            label(for='inputEmail') Email
+            input#inputEmail.form-control(type='email', placeholder='Email',name="email",required='',autocomplete='off')
           .form-group
             label(for='inputPassword') Password
             input#inputPassword.form-control(type='password', placeholder='Password',name="password", required='')

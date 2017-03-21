@@ -11,7 +11,7 @@ module.exports.get = function(req,res){
 };
 module.exports.post = function(req,res){
     var updatedProfile = {
-        username:req.body.username,
+        email:req.body.username,
         bio:req.body.bio,
         displayName:req.body.displayName
     }
