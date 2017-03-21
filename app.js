@@ -9,11 +9,11 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const flash = require("connect-flash");
 const passport = require("passport");
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://localhost:27017/setup");
+mongoose.connect("mongodb://localhost:27017/blogo");
 var store = new MongoDBStore(
       {
-        uri: 'mongodb://localhost:27017/setup',
-        collection: 'loginSessions'
+        uri: 'mongodb://localhost:27017/blogo',
+        collection: 'login-sessions'
       });
 const routes = require("./routes/routes");
 var setUpPassport = require("./setupassport");

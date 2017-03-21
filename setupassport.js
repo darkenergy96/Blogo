@@ -22,12 +22,14 @@ passport.use("login", new LocalStrategy(
  return done(null, false,
  { message: "No user has that username!" });
  }
- User.findOne({password:password},function(err,pwd){
-     if(err){return done(err);}
-     if(!pwd){
-         return done(null,false,{message:"Incorrect password!!"});
-     }
-     return done(null, pwd);;
- })
+ user.checkPassword(password, function(err, isMatch) {
+ if (err) { return done(err); }
+ if (isMatch) {
+ return done(null, user);
+ } else {
+ return done(null, false,
+ { message: "Invalid password." });
+ }
+ });
  });
 }));
