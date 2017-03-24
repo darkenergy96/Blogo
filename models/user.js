@@ -7,7 +7,8 @@ var userSchema = mongoose.Schema({
     joinedOn:{type:Date,default:Date.now()},
     displayName:String,
     lastActive:{type:Date},
-    bio:String
+    bio:String,
+    googleId:String
 });
 var noop = function(){}
 userSchema.pre("save",function(done){

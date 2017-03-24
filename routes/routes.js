@@ -52,6 +52,18 @@ router.get('/signout',function(req,res){
 });
 router.get('/post',require('./post').get);
 router.post('/post',require('./post').post);
+
+router.get('/auth/google',
+  passport.authenticate('google', { scope: 
+  	[ 'https://www.googleapis.com/auth/plus.login',
+  	, 'https://www.googleapis.com/auth/plus.profile.emails.read' ] }
+));
+ 
+router.get( '/auth/google/callback', 
+    passport.authenticate( 'google', { 
+        successRedirect: '/',
+        failureRedirect: '/signin'
+}));
 router.use(function(req,res){
     res.send('404 error!');
 });

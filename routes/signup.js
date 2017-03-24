@@ -5,6 +5,9 @@ module.exports.get = function(req,res){
 module.exports.post = function(req,res,next){
     var email = req.body.email;
     var password = req.body.password;
+    if(password == ""){
+        throw err;
+    }
     User.findOne({email:email},function(err,user){
         if(err){
             return next(err);

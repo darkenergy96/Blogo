@@ -1,6 +1,5 @@
 'use strict';
 const express = require("express");
-
 const path = require("path");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -19,6 +18,7 @@ const routes = require("./routes/routes");
 var setUpPassport = require("./setupassport");
 var app = express();
 app.set("port",process.env.PORT || 3000);
+var port = app.get('port');
 
 app.set("views",path.join(__dirname, "views"));
 app.set("view engine","pug");
@@ -58,6 +58,6 @@ process.on('SIGINT', function() {
  });
 });
 
-app.listen(app.get("port"),function(){
-    console.log("App running on port " + app.get("port"));
-})
+app.listen(port,function(){
+    console.log("Blogo app running on port " + port);
+});
