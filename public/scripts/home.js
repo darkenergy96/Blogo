@@ -50,4 +50,14 @@ $('.hide').click(function(){
         $('.fadeOutLeft').remove();
     },400);
 });
-
+$('.cool').click(function(){
+    var userid = $(this).attr('data-userid');
+    
+    $.ajax({
+        url:'/follow/'+userid,
+        type:'PUT',
+        success:function(data){
+            alert(data);
+        }
+    });
+});

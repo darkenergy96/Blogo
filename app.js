@@ -49,11 +49,12 @@ mongoose.connection.on('error',function (err) {
  console.log('Mongoose connection error: ' + err);
 });
 mongoose.connection.on('disconnected', function () {
- console.log('Mongoose disconnected');
+ console.log('Mongoose disconnected\n');
+ process.exit(0);
 });
 process.on('SIGINT', function() {
  mongoose.connection.close(function () {
- console.log('Mongoose disconnected through app termination');
+ console.log('Mongoose disconnected through app termination\n');
  process.exit(0);
  });
 });

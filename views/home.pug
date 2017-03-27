@@ -8,6 +8,8 @@ html
         .container
             if(currentUser)
                 p hello #{currentUser.email}
+                a(href="/writepost") write blogpost
+                br
                 a(href="/signout") signout
             else
                 p Hello user 

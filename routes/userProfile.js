@@ -1,7 +1,7 @@
 const User = require('../models/user');
 module.exports = function(req,res){
-    var username = req.params.username;
-    User.findOne({username:username},function(err,user){
+    var id = req.params.id;
+    User.findOne({_id:id}).exec(function(err,user){
         if(err){
             res.send('error getting user');
 
@@ -10,5 +10,5 @@ module.exports = function(req,res){
             res.send(user);
         }
     })
-    
+
 }

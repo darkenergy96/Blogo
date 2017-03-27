@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Blogpost = require('../models/blogpost');
 const passport = require('passport');
 var LocalStrategy = require("passport-local").Strategy;
+var writepostRoute = require('./writepost');
 const isAuthenticated = function(req,res,next){
     if(req.isAuthenticated()){
         res.redirect('/');
@@ -45,13 +47,13 @@ router.post('/signup',require('./signup').post,passport.authenticate('login',{
     failureRedirect:'signup',
     failureFlash:true
 }));
-router.get('/user/:username',require('./userProfile'))
+router.get('/user/:id',require('./userProfile'))
 router.get('/signout',function(req,res){
     req.logout();
     res.redirect('/signin');
 });
-router.get('/post',require('./post').get);
-router.post('/post',require('./post').post);
+// router.get('/post',require('./post').get);
+// router.post('/post',require('./post').post);
 
 router.get('/auth/google',
   passport.authenticate('google', { scope: 
@@ -64,9 +66,16 @@ router.get( '/auth/google/callback',
         successRedirect: '/',
         failureRedirect: '/signin'
 }));
+//feed
+router.get('/feed',require('./feed'));
+router.get('/users',require('./users'));
+//write a post
+router.get('/writepost',writepostRoute.get);
+router.post('/writepost',writepostRoute.post);
+//follow user
+router.put('/follow/:otherUserId',require('./followUser'));
 router.use(function(req,res){
     res.send('404 error!');
 });
-
 
 module.exports = router;

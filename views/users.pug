@@ -1,0 +1,20 @@
+doctype html
+html
+head
+    meta(charset="UTF-8")
+    title Users
+    link(rel="stylesheet", href="css/bootstrap.css")
+    
+
+body
+    .container
+        .row
+            each user in users            
+                    .col-md-4.user
+                        a(href="/user/"+user.id)=user.name()
+                        br
+                        p.text-center.cool(style='color:teal;cursor:pointer',data-userid=user.id) follow
+                        br
+
+    script(src='scripts/jquery.js')
+    script(src='scripts/home.js')

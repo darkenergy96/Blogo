@@ -1,4 +1,13 @@
 const mongoose = require('mongoose');
+var blogpostSchema = mongoose.Schema({
+    createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
+    title:{type:String},
+    description:{type:String},
+    createdOn:{type:Date,default:Date.now()},
+    upvotes:{type:Number},
+    downvotes:{type:Number},
+    visibility:{type:String}//public,followers,private
+});
 var bcrypt = require("bcrypt-nodejs");
 var SALT_FACTOR = 8;
 var userSchema = mongoose.Schema({
@@ -8,7 +17,10 @@ var userSchema = mongoose.Schema({
     displayName:String,
     lastActive:{type:Date},
     bio:String,
-    googleId:String
+    googleId:String,
+    followers:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
+    following:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
+    blogposts:[blogpostSchema]
 });
 var noop = function(){}
 userSchema.pre("save",function(done){
@@ -35,6 +47,8 @@ userSchema.methods.checkPassword = function(guess, done) {
  done(err, isMatch);
  });
 };
-
+userSchema.methods.name = function(){
+    return this.displayName || this.email;
+}
 var User = mongoose.model('User',userSchema);
 module.exports = User;
