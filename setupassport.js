@@ -3,7 +3,7 @@ var passport = require("passport");
 var User = require("./models/user");
 var LocalStrategy = require("passport-local").Strategy;
 var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-// var apiKeys = require('./api_keys');
+var apiKeys = require('./api_keys');
 
 module.exports = function() {
  passport.serializeUser(function(user, done) {
