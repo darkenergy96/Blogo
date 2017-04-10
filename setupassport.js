@@ -3,7 +3,7 @@ var passport = require("passport");
 var User = require("./models/user");
 var LocalStrategy = require("passport-local").Strategy;
 var GoogleStrategy = require( 'passport-google-oauth2' ).Strategy;
-var apiKeys = require('./api_keys');
+// var apiKeys = require('./api_keys');
 
 module.exports = function() {
  passport.serializeUser(function(user, done) {
@@ -41,8 +41,8 @@ passport.use("login", new LocalStrategy({
 }));
 //google oauth2
 passport.use(new GoogleStrategy({
-    clientID:     apiKeys.google.clientID,
-    clientSecret: apiKeys.google.clientSecret,
+    clientID:     'apiKeys.google.clientID',
+    clientSecret: 'apiKeys.google.clientSecret',
     callbackURL: "http://localhost:3000/auth/google/callback",
     passReqToCallback   : true
   },

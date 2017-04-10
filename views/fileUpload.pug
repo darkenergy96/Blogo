@@ -1,0 +1,10 @@
+doctype html
+html
+head
+    meta(charset="UTF-8")
+    title File Upload
+body
+    form(action="/uploadPic",method='POST',enctype='multipart/form-data')
+        input(type='file',name='photo',required='')
+        input(type="submit",value='upload')
+    

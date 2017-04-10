@@ -1,13 +1,5 @@
 const mongoose = require('mongoose');
-var blogpostSchema = mongoose.Schema({
-    createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User'},
-    title:{type:String},
-    description:{type:String},
-    createdOn:{type:Date,default:Date.now()},
-    upvotes:{type:Number},
-    downvotes:{type:Number},
-    visibility:{type:String}//public,followers,private
-});
+var blogpostSchema = require('./blogpost').blogpostSchema;
 var bcrypt = require("bcrypt-nodejs");
 var SALT_FACTOR = 8;
 var userSchema = mongoose.Schema({

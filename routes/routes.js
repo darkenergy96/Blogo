@@ -74,6 +74,9 @@ router.get('/writepost',writepostRoute.get);
 router.post('/writepost',writepostRoute.post);
 //follow user
 router.put('/follow/:otherUserId',require('./followUser'));
+//upload pic
+router.get('/uploadPic',require('./uploadpic').get);
+router.post('/uploadPic',require('./uploadpic').post);
 router.use(function(req,res){
     res.send('404 error!');
 });
